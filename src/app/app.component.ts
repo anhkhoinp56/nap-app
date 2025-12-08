@@ -144,7 +144,7 @@ export class AppComponent {
     utterance.lang = 'vi-VN';
     utterance.voice = this.selectedVoice;
     // slightly faster voice for short words
-    utterance.rate = 1;
+    utterance.rate = 0.5;
     // cancel any pending short utterances to keep timing predictable
     // window.speechSynthesis.cancel();
     // window.speechSynthesis.speak(utter);
