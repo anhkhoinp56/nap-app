@@ -55,7 +55,7 @@ export class AppComponent {
 
     this.voices = speechSynthesis.getVoices();
     setTimeout(() => {
-      this.voices = speechSynthesis.getVoices().filter(x => x.lang === "vi-VN");
+      this.voices = speechSynthesis.getVoices();
       if (this.voices.length >= 29) {
         this.selectedVoice = this.voices[28];
       } else {
