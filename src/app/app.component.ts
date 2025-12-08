@@ -26,17 +26,13 @@ export class AppComponent {
   // Main counter (300 -> 0)
   counter = 300;
 
-
   // inner second within current 10s cycle (0..10). We'll display from 1..10 for users.
   innerSec = 0; // increments each 1s tick to 1..10
-
 
   // running state
   running = false;
 
-
   private tickHandle: any = null; // interval handle for 1s ticks
-
 
   // convenience displays
   get innerSecDisplay() { return this.innerSec === 0 ? 0 : this.innerSec; }
@@ -50,12 +46,9 @@ export class AppComponent {
   voices: SpeechSynthesisVoice[] = [];
   selectedVoice: SpeechSynthesisVoice | null = null;
   ngOnInit(): void {
-    // optional: autostart
-    // this.start();
-
-    this.voices = speechSynthesis.getVoices();
+    this.voices = speechSynthesis.getVoices().filter(x => x.lang === "vi-VN");
     setTimeout(() => {
-      this.voices = speechSynthesis.getVoices();
+      this.voices = speechSynthesis.getVoices().filter(x => x.lang === "vi-VN");
       if (this.voices.length >= 29) {
         this.selectedVoice = this.voices[28];
       } else {
@@ -63,6 +56,7 @@ export class AppComponent {
       }
     }, 500);
   }
+
 
 
   ngOnDestroy(): void {
@@ -77,9 +71,9 @@ export class AppComponent {
 
     // if innerSec is 0, we are at the start of a new 10s cycle; we'll begin ticking.
     this.tickHandle = setInterval(() => {
-        (async () => {
-            await this.onTick();
-        })();
+      (async () => {
+        await this.onTick();
+      })();
     }, 1000);
   }
 
@@ -146,7 +140,7 @@ export class AppComponent {
     utterance.lang = 'vi-VN';
     utterance.voice = this.selectedVoice;
     // slightly faster voice for short words
-    utterance.rate = 0.1;
+    utterance.rate = 1;
     // cancel any pending short utterances to keep timing predictable
     // window.speechSynthesis.cancel();
     // window.speechSynthesis.speak(utter);
@@ -154,29 +148,6 @@ export class AppComponent {
     speechSynthesis.speak(utterance);
 
   }
-  // async speakWord() {
-
-  //   var utterance = new SpeechSynthesisUtterance(this.enWord1);
-  //   utterance.lang = 'en-US';
-  //   utterance.voice = this.selectedVoice;
-  //   utterance.rate = this.selectedRate;
-  //   if (this.isAuto) {
-  //     utterance.onend = async (event) => {
-  //       if (this.speakWordCount > this.speakWordCountMax) {
-  //         this.speakWordCount = 0;
-  //         this.change();
-  //         await this.sleep();
-  //         await this.speakSentence();
-  //       } else {
-  //         await this.sleep();
-  //         await this.speakWord();
-  //       };
-  //     };
-  //   };
-  //   speechSynthesis.speak(utterance);
-  // };
-
-
 
 
 
