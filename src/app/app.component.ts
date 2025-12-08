@@ -136,23 +136,19 @@ export class AppComponent {
   }
 
   private speak(text: string) {
-    try {
-      if (!('speechSynthesis' in window)) return;
-      const utter = new SpeechSynthesisUtterance(text);
-      // prefer Vietnamese voice when available
-      utter.lang = 'vi-VN';
-      utter.voice = this.selectedVoice;
-      // slightly faster voice for short words
-      utter.rate = 0.1;
-      // cancel any pending short utterances to keep timing predictable
-      // window.speechSynthesis.cancel();
-      // window.speechSynthesis.speak(utter);
 
-      speechSynthesis.speak(utter);
-    } catch (e) {
-      // ignore errors
-      console.warn('Speech error', e);
-    }
+    const utterance = new SpeechSynthesisUtterance(text);
+    // prefer Vietnamese voice when available
+    utterance.lang = 'vi-VN';
+    utterance.voice = this.selectedVoice;
+    // slightly faster voice for short words
+    utterance.rate = 0.1;
+    // cancel any pending short utterances to keep timing predictable
+    // window.speechSynthesis.cancel();
+    // window.speechSynthesis.speak(utter);
+
+    speechSynthesis.speak(utterance);
+
   }
   // async speakWord() {
 
