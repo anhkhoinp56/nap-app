@@ -145,8 +145,10 @@ export class AppComponent {
       // slightly faster voice for short words
       utter.rate = 0.1;
       // cancel any pending short utterances to keep timing predictable
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(utter);
+      // window.speechSynthesis.cancel();
+      // window.speechSynthesis.speak(utter);
+
+      speechSynthesis.speak(utter);
     } catch (e) {
       // ignore errors
       console.warn('Speech error', e);
