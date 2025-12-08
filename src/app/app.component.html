@@ -8,9 +8,6 @@
               <option *ngFor="let option of voices" [ngValue]="option">{{ option.name }}</option>
             </select>
           </div>
-          <div class="col-4">
-
-          </div>
         </div>
       </div>
     </div>
@@ -21,7 +18,6 @@
             <div class="container">
               <h1>Đếm ngược: {{ counter }}</h1>
 
-
               <div class="cycle">
                 <div>Chu kỳ hiện tại: {{ cycleNumber }} / {{ totalCycles }}</div>
                 <div class="bar">
@@ -30,14 +26,12 @@
                 <div>Giây trong chu kỳ: {{ innerSecDisplay }} / 10</div>
               </div>
 
-
               <div class="controls">
                 <button (click)="start()" [disabled]="running">Start</button>
                 <button (click)="pause()" [disabled]="!running">Pause</button>
                 <button (click)="reset()">Reset</button>
-                <button (click)="hello()">Reset</button>
+                <button (click)="test()">Test voice</button>
               </div>
-
 
               <div class="note">Mỗi số giữ trong 10s. Ở giây thứ 1 phát "Hít", giây thứ 6 phát "Thở".</div>
             </div>
@@ -45,13 +39,10 @@
         </div>
       </div>
     </div>
-
-
   </div>
 
-
-  <div *ngFor="let voice of voices" style="margin-bottom: 10px;">
+  <!-- <div *ngFor="let voice of voices" style="margin-bottom: 10px;">
     <strong>{{ voice.name }}</strong> ({{ voice.lang }})
   </div>
-  <pre>{{ voices | json }}</pre>
+  <pre>{{ voices | json }}</pre> -->
 </div>
