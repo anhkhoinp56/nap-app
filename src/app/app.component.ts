@@ -57,11 +57,9 @@ export class AppComponent {
     setTimeout(() => {
       this.voices = speechSynthesis.getVoices().filter(x => x.lang === "vi-VN");
       if (this.voices.length >= 29) {
-        console.log("this.voices", this.voices)
-        // this.selectedVoice = this.voices[28];
+        this.selectedVoice = this.voices[28];
       } else {
-        console.log("this.voices", this.voices)
-        // this.selectedVoice = this.voices[0];
+        this.selectedVoice = this.voices[0];
       }
     }, 500);
   }
