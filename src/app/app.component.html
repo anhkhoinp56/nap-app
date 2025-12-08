@@ -1,7 +1,7 @@
 <div class="container mt-2">
   <div class="container" style="min-height: 200px">
     <div class="row" style="margin-bottom: 30px;">
-      <div class="col-11">
+      <div class="col-12">
         <div class="row">
           <div class="col-8">
             <select class="form-select" [(ngModel)]="selectedVoice">
@@ -9,13 +9,13 @@
             </select>
           </div>
           <div class="col-4">
-   
+
           </div>
         </div>
-
       </div>
-
-      <div class="col-1 d-flex justify-content-center">
+    </div>
+    <div class="row" style="margin-bottom: 30px;">
+      <div class="col-12">
         <div class="row justify-content-center">
           <div class="col-12 d-flex justify-content-center align-items-center">
             <div class="container">
@@ -51,6 +51,6 @@
 
   <div *ngFor="let voice of voices" style="margin-bottom: 10px;">
     <strong>{{ voice.name }}</strong> ({{ voice.lang }})
-  </div> 
-   <pre>{{ voices | json }}</pre>
+  </div>
+  <pre>{{ voices | json }}</pre>
 </div>
