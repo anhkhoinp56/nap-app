@@ -27,10 +27,10 @@
               </div>
 
               <div class="controls">
-                <button (click)="start()" [disabled]="running">Start</button>
-                <button (click)="pause()" [disabled]="!running">Pause</button>
-                <button (click)="reset()">Reset</button>
-                <button (click)="test()">Test voice</button>
+                <button class="btn btn-primary me-2" (click)="start()" [disabled]="running">Start</button>
+                <button class="btn btn-warning me-2" (click)="pause()" [disabled]="!running">Pause</button>
+                <button class="btn btn-danger me-2" (click)="reset()">Reset</button>
+                <button class="btn btn-success" (click)="test()">Test voice</button>
               </div>
 
               <div class="note">Mỗi số giữ trong 10s. Ở giây thứ 1 phát "Hít", giây thứ 6 phát "Thở".</div>
