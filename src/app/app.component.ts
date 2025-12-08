@@ -133,6 +133,10 @@ export class AppComponent {
     }
   }
 
+  async hello(){
+    await this.speak('Xin chào bạn');
+  }
+
   async speak(text: string) {
 
     const utterance = new SpeechSynthesisUtterance(text);
