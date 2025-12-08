@@ -76,7 +76,11 @@ export class AppComponent {
 
 
     // if innerSec is 0, we are at the start of a new 10s cycle; we'll begin ticking.
-    this.tickHandle = setInterval(() => this.onTick(), 1000);
+    this.tickHandle = setInterval(() => {
+        (async () => {
+            await this.onTick();
+        })();
+    }, 1000);
   }
 
 
@@ -99,20 +103,20 @@ export class AppComponent {
     }
   }
 
-  private onTick() {
+  async onTick() {
     // increase inner second
     this.innerSec++;
 
 
     // At innerSec == 1 -> first second of the 10s period (play "Hít")
     if (this.innerSec === 1) {
-      this.speak('Hít vào');
+      await this.speak('Hít vào');
     }
 
 
     // At innerSec == 6 -> play "Thở"
     if (this.innerSec === 6) {
-      this.speak('Thở ra');
+      await this.speak('Thở ra');
     }
 
 
@@ -135,7 +139,7 @@ export class AppComponent {
     }
   }
 
-  private speak(text: string) {
+  async speak(text: string) {
 
     const utterance = new SpeechSynthesisUtterance(text);
     // prefer Vietnamese voice when available
