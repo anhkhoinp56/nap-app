@@ -12,7 +12,7 @@ export class AppComponent {
   tickHandle: any = null;
 
   get innerSecDisplay() { return this.innerSec === 0 ? 0 : this.innerSec; }
-  get totalCycles() { return 301; }
+  get totalCycles() { return 201; }
   get cycleNumber() { return this.totalCycles - this.counter; }
 
   voices: SpeechSynthesisVoice[] = [];
@@ -52,7 +52,7 @@ export class AppComponent {
 
   reset() {
     this.pause();
-    this.counter = 300;
+    this.counter = 200;
     this.innerSec = 0;
   }
 
@@ -70,11 +70,11 @@ export class AppComponent {
       await this.speak('Hít vào');
     }
 
-    if (this.innerSec === 6) {
+    if (this.innerSec === 5) {
       await this.speak('Thở ra');
     }
 
-    if (this.innerSec >= 10) {
+    if (this.innerSec >= 9) {
       if (this.counter > 0) {
         this.counter--;
       }
@@ -95,7 +95,7 @@ export class AppComponent {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'vi-VN';
     utterance.voice = this.selectedVoice;
-    utterance.rate = 0.5;
+    utterance.rate = 0.4;
     speechSynthesis.speak(utterance);
   }
 }
